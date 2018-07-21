@@ -1,3 +1,4 @@
+import { PonyService } from './../pony.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 
@@ -21,7 +22,7 @@ export class StartPlayingComponent implements OnInit {
     'Princess Celestia'
   ];
 
-  constructor() {}
+  constructor(private ponyService: PonyService) {}
 
   ngOnInit() {
     this.ponyUserForm = new FormGroup({
@@ -47,5 +48,13 @@ export class StartPlayingComponent implements OnInit {
 
   onFormSubmit() {
     console.log(this.ponyUserForm.value);
+    this.ponyService.createMaze(this.ponyUserForm.value).subscribe(
+      res => {
+        console.log(res);
+      },
+      err => {
+        const error = err.error;
+      }
+    );
   }
 }
