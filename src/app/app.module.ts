@@ -8,13 +8,15 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { StartPlayingComponent } from './start-playing/start-playing.component';
 import { HttpClientModule } from '@angular/common/http';
+import { GamePlaygroundComponent } from './game-playground/game-playground.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    StartPlayingComponent
+    StartPlayingComponent,
+    GamePlaygroundComponent
   ],
   imports: [
     BrowserModule,

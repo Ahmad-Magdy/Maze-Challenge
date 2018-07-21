@@ -8,7 +8,7 @@ import { FormControl, Validators, FormGroup } from '@angular/forms';
   styleUrls: ['./start-playing.component.css']
 })
 export class StartPlayingComponent implements OnInit {
-  challengeLevel: number;
+  mazeId: string;
   ponyUserForm: FormGroup;
   // Source of the names Wikipedia
   ponyNames = [
@@ -51,6 +51,7 @@ export class StartPlayingComponent implements OnInit {
     this.ponyService.createMaze(this.ponyUserForm.value).subscribe(
       res => {
         console.log(res);
+        this.mazeId = res.maze_id;
       },
       err => {
         const error = err.error;

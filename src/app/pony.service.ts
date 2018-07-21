@@ -9,7 +9,7 @@ export class PonyService {
   constructor(private http: HttpClient) {}
 
   createMaze({ ponyName, width, height, difficulty }) {
-    return this.http.post(this.baseURL, {
+    return this.http.post<{ maze_id: string }>(this.baseURL, {
       'maze-width': width,
       'maze-height': height,
       'maze-player-name': ponyName,
