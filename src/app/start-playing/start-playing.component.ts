@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-start-playing',
@@ -6,10 +7,45 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./start-playing.component.css']
 })
 export class StartPlayingComponent implements OnInit {
+  challengeLevel: number;
+  ponyUserForm: FormGroup;
+  // Source of the names Wikipedia
+  ponyNames = [
+    'Twilight Sparkle',
+    'Rainbow Dash',
+    'Pinkie Pie',
+    'Rarity',
+    'Applejack',
+    'Fluttershy',
+    'Spike',
+    'Princess Celestia'
+  ];
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
+    this.ponyUserForm = new FormGroup({
+      ponyName: new FormControl('', [Validators.required]),
+      difficulty: new FormControl('', [
+        Validators.required,
+        Validators.max(10),
+        Validators.min(0)
+      ]),
+      width: new FormControl('', [
+        Validators.required,
+        Validators.min(15),
+        Validators.max(25)
+      ]),
+      height: new FormControl('', [
+        Validators.required,
+        Validators.min(15),
+        Validators.max(25)
+      ])
+    });
+    // this.levelControl = new FormControl('', [Validators.max(100), Validators.min(0)]);
   }
 
+  onFormSubmit() {
+    console.log(this.ponyUserForm.value);
+  }
 }

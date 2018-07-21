@@ -1,3 +1,37 @@
-<p>
-  start-playing works!
-</p>
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="ponyUserForm" (ngSubmit)="onFormSubmit()">
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label>Pony Name</label>
+          <select class="form-control" aria-describedby="pony name" formControlName="ponyName">
+            <option *ngFor="let name of ponyNames" [value]="name">{{name}}</option>
+          </select>
+          <small class="form-text text-muted">Choose a Pony name.</small>
+        </div>
+        <div class="form-group col-md-6">
+          <label>Challenge Level {{challengeLevel}}</label>
+          <input type="number" class="form-control" aria-describedby="challenge level" placeholder="Challenge Level" formControlName="difficulty">
+          <small class="form-text text-muted">Are you really excited to help our lovely pony, if you're into the challenge you can choose challenge level from
+            0 to 10, and show us how you can win 😎</small>
+        </div>
+
+        <div class="form-group col-md-6">
+          <label>Maze Widht:</label>
+          <input type="number" class="form-control" aria-describedby="maze width" placeholder="Maze Width" formControlName="width">
+          <small class="form-text text-muted">Maze Width Should be between 15-25</small>
+        </div>
+
+
+        <div class="form-group col-md-6">
+          <label>Maze Height:</label>
+          <input type="number" class="form-control" aria-describedby="maze height" placeholder="Maze Height" formControlName="height">
+          <small class="form-text text-muted">Maze Height Should be between 15-25</small>
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="!ponyUserForm.valid">Submit</button>
+
+      </div>
+    </form>
+  </div>
+</div>
