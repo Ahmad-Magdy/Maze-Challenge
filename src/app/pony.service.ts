@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class PonyService {
-  baseURL = 'https://ponychallenge.trustpilot.com/pony-challenge/maze';
+  private baseURL = 'https://ponychallenge.trustpilot.com/pony-challenge/maze';
   constructor(private http: HttpClient) {}
 
   createMaze({ ponyName, width, height, difficulty }) {
