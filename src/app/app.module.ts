@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { StartPlayingComponent } from './start-playing/start-playing.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { StartPlayingComponent } from './start-playing/start-playing.component';
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    HttpClientModule
     AppRoutingModule
   ],
   providers: [],
