@@ -43,7 +43,10 @@ export class StartPlayingComponent implements OnInit {
         Validators.max(25)
       ])
     });
-    // this.levelControl = new FormControl('', [Validators.max(100), Validators.min(0)]);
+    this.ponyUserForm.controls['ponyName'].setValue('Rarity');
+    this.ponyUserForm.controls['difficulty'].setValue(0);
+    this.ponyUserForm.controls['width'].setValue(15);
+    this.ponyUserForm.controls['height'].setValue(20);
   }
 
   onFormSubmit() {

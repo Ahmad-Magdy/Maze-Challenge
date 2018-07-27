@@ -1,3 +1,29 @@
-<p>
-  game-playground works!
-</p>
+<div class="row">
+  <div class="btn-toolbar mx-auto">
+    <div class="btn-group">
+      <button class="btn btn-primary btn-sm" (click)="handleMovements('north')">Up</button>
+      <button class="btn btn-info btn-sm" (click)="handleMovements('south')">Down</button>
+      <button class="btn btn-primary btn-sm" (click)="handleMovements('east')">Right</button>
+      <button class="btn btn-info btn-sm" (click)="handleMovements('west')">Left</button>
+    </div>
+    <div class="ml-2">
+      <button class="btn btn-success" (click)="autoPlay()">Auto Play</button>
+
+    </div>
+  </div>
+</div>
+
+<div class="row" *ngIf="finalState">
+  <div class="alert mx-auto" role="alert"
+  [ngClass]="{'alert-primary': finalState.state === 'won', 'alert-warning' :finalState.state === 'over'}">
+    {{finalState.state}}
+  </div>
+
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <pre class="text-center" *ngIf="!finalState">{{mazeInText}}</pre>
+    <img *ngIf="finalState" class="mx-auto d-block" src="https://ponychallenge.trustpilot.com/{{finalState['hidden-url']}}" height="300">
+
+  </div>
+</div>
