@@ -107,15 +107,20 @@ export class PonyMovementService {
     }
     console.log(movements.reverse());
     for (const direction of movements) {
-      const res = await this.ponyService
-        .ponyNextMove(this.mazeId, direction)
-        .toPromise();
-      const mazeFigure = await this.ponyService
-        .printMaze(this.mazeId)
-        .toPromise();
-      this.mazeFigure$.next(mazeFigure);
-      if (res.state !== 'active') {
-        return res;
+      try {
+        const res = await this.ponyService
+          .ponyNextMove(this.mazeId, direction)
+          .toPromise();
+        const mazeFigure = await this.ponyService
+          .printMaze(this.mazeId)
+          .toPromise();
+        this.mazeFigure$.next(mazeFigure);
+        if (res.state !== 'active') {
+          return res;
+        }
+      } catch (ex) {
+        throw ex;
+        // TODO handle
       }
     }
   }

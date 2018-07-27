@@ -21,6 +21,8 @@ export class GamePlaygroundComponent implements OnInit {
   mazeInText: string;
   finalState: GameState;
 
+  isStart = false;
+
   @HostListener('document:keyup', ['$event'])
   handleKeyBoardKey(event: KeyboardEvent) {
     let direction: string;
@@ -62,9 +64,9 @@ export class GamePlaygroundComponent implements OnInit {
   handleMovements(direction: string) {
     this.ponyService.ponyNextMove(this.mazeId, direction).subscribe(
       res => {
-        // TODO handle
-        if (res.state === 'won') {
-        } else if (res.state === 'over') {
+        if (res.state !== 'active') {
+          this.finalState = res;
+          this.isStart = true;
         }
         this.reLoadMaze();
       },
@@ -94,15 +96,10 @@ export class GamePlaygroundComponent implements OnInit {
   }
 
   async autoPlay() {
+    this.isStart = true;
     const finalState = await this.ponyMovementService.getPonyMovements(
       this.mazeId
     );
     this.finalState = finalState;
-    // if (finalState.state === 'won') {
-    //   const finalState =
-    //   const finalImage = finalState['hidden-url'];
-    //   // won // https://ponychallenge.trustpilot.com/eW91X3NhdmVkX3RoZV9wb255.jpg
-    //   // over // /eW91X2tpbGxlZF90aGVfcG9ueQ==.jpg
-    // }
   }
 }

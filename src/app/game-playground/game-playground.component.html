@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" *ngIf="!isStart">
   <div class="btn-toolbar mx-auto">
     <div class="btn-group">
       <button class="btn btn-primary btn-sm" (click)="handleMovements('north')">Up</button>
